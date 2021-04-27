@@ -22,8 +22,8 @@ export const JewelryStyles = () => {
 
     // Join all of the strings in the array into a single string
     html += listItems.join("")
-
     html += "</ul>"
+    
     return html
 }
 
