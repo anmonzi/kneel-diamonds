@@ -2,11 +2,11 @@ import { getMetals } from "./database.js"
 
 const metals = getMetals()
 
-document.addEventListener(
-    "change",
-    (event) => {
-    }
-)
+// document.addEventListener(
+//     "change",
+//     (event) => {
+//     }
+// )
 
 export const Metals = () => {
     let html = "<ul>"
