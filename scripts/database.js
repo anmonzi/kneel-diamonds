@@ -6,6 +6,20 @@
 
 */
 const database = {
+    orderBuilder: {
+        metalId: "",
+        sizeId: "",
+        styleId: "",
+        set metal(metalFk) {
+            this.metalId = metalFk;
+        },
+        set size(sizeFk) {
+            this.sizeId = sizeFk;
+        },
+        set style(styleFk) {
+            this.styleId = styleFk;
+        }
+    },
     styles: [
         { id: 1, style: "Classic", price: 500 },
         { id: 2, style: "Modern", price: 710 },
@@ -36,6 +50,8 @@ const database = {
     ]
 }
 
+
+// Functions to grab a copy of property on database 
 export const getMetals = () => {
     return [...database.metals]
 }
@@ -50,4 +66,21 @@ export const getStyles = () => {
 
 export const getOrders = () => {
     return [...database.customOrders]
+}
+
+
+
+
+
+// Setter functions to set state
+export const setMetal = (id) => {
+    database.orderBuilder.metalId = id
+}
+
+export const setSize = (id) => {
+    database.orderBuilder.sizeId = id
+}
+
+export const setStyle = (id) => {
+    database.orderBuilder.styleId = id
 }
