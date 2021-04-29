@@ -6,7 +6,6 @@
 
 */
 const database = {
-    orderBuilder: {},
     styles: [
         { id: 1, style: "Classic", price: 500 },
         { id: 2, style: "Modern", price: 710 },
@@ -26,15 +25,22 @@ const database = {
         { id: 4, metal: "Platinum", price: 795.45 },
         { id: 5, metal: "Palladium", price: 1241.0 }
     ],
+    types: [
+        { id: 1, type: "ring", price: 1 },
+        { id: 2, type: "earring", price: 2 },
+        { id: 3, type: "necklace", price: 4 }
+    ],
     customOrders: [
         {
             id: 1,
             metalId: 3,
             sizeId: 2,
             styleId: 3,
+            typeId: 1,
             timestamp: 1614659931693
         }
-    ]
+    ],
+    orderBuilder: {}
 }
 
 
@@ -49,6 +55,10 @@ export const getSizes = () => {
 
 export const getStyles = () => {
     return [...database.styles]
+}
+
+export const getTypes = () => {
+    return [...database.types]
 }
 
 export const getCustomOrders = () => {
@@ -68,6 +78,10 @@ export const setSize = (id) => {
 
 export const setStyle = (id) => {
     database.orderBuilder.styleId = id
+}
+
+export const setType = (id) => {
+    database.orderBuilder.typeId = id
 }
 
 

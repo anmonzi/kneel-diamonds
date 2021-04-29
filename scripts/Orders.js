@@ -1,8 +1,9 @@
-import { getMetals, getCustomOrders, getSizes, getStyles } from "./database.js";
+import { getMetals, getCustomOrders, getSizes, getStyles, getTypes } from "./database.js";
 
 const metals = getMetals()
 const sizes = getSizes()
 const styles = getStyles()
+const types = getTypes()
 
 
 const buildOrderListItem = (order) => {
@@ -20,10 +21,14 @@ const buildOrderListItem = (order) => {
     return style.id === order.styleId
   })
 
+  const foundType = types.find((type) => {
+      return type.id === order.typeId
+  })
+
 
 
   // Adding all prices to save total cost of a piece
-  const totalCost = foundMetal.price + foundSize.price + foundStyle.price
+  const totalCost = (foundMetal.price + foundSize.price + foundStyle.price) * foundType.price
 
   const costString = totalCost.toLocaleString("en-US", {
     style: "currency",
@@ -33,7 +38,7 @@ const buildOrderListItem = (order) => {
   
 
   return `<li>
-        Order #${order.id} was placed on ${new Date()} and costs ${costString}
+        Order #${order.id} costs ${costString}
     </li>`
 }
 
