@@ -6,17 +6,7 @@
 
 */
 const database = {
-    orderBuilder: {
-        set metal(metalFk) {
-            this.metalId = metalFk;
-        },
-        set size(sizeFk) {
-            this.sizeId = sizeFk;
-        },
-        set style(styleFk) {
-            this.styleId = styleFk;
-        }
-    },
+    orderBuilder: {},
     styles: [
         { id: 1, style: "Classic", price: 500 },
         { id: 2, style: "Modern", price: 710 },
@@ -61,9 +51,26 @@ export const getStyles = () => {
     return [...database.styles]
 }
 
-export const getOrders = () => {
+export const getCustomOrders = () => {
     return [...database.customOrders]
 }
+
+
+
+// Setter functions to set state
+export const setMetal = (id) => {
+    database.orderBuilder.metalId = id
+}
+
+export const setSize = (id) => {
+    database.orderBuilder.sizeId = id
+}
+
+export const setStyle = (id) => {
+    database.orderBuilder.styleId = id
+}
+
+
 
 export const addCustomOrder = () => {
     // Copy the current state of user choices
@@ -83,20 +90,4 @@ export const addCustomOrder = () => {
 
     // Broadcast a notification that permanent state has changed
     document.dispatchEvent(new CustomEvent("stateChanged"))
-}
-
-
-
-
-// Setter functions to set state
-export const setMetal = (id) => {
-    database.orderBuilder.metalId = id
-}
-
-export const setSize = (id) => {
-    database.orderBuilder.sizeId = id
-}
-
-export const setStyle = (id) => {
-    database.orderBuilder.styleId = id
 }
